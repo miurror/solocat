@@ -1,4 +1,4 @@
 # Solo-Cat
 A puzzle game written in TypeScript.
 
-[Play it online!](miurror.net/solocat/)
+[Play it online!](https://miurror.net/solocat/)
