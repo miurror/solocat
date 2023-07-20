@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Solo-Cat</title>
+        <link rel="preload" href="./assets/nikumaru-font-woff.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="./assets/GenJyuuGothic-Medium-woff.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="./assets/uzura-woff.woff2" as="font" type="font/woff2" crossorigin>
+        <style type="text/css">
+            @font-face {
+                font-family: 'Nikumaru';
+                src: url('./assets/nikumaru-font-woff.woff2');
+                font-display: swap;
+            }
+            @font-face {
+                font-family: 'fontA';
+                src: url('./assets/GenJyuuGothic-Medium-woff.woff2');
+                font-display: swap;
+            }
+            @font-face {
+                font-family: 'fontB';
+                src: url('./assets/uzura-woff.woff2');
+                font-display: swap;
+            }
+            .nikumaru {
+                font-family: 'Nikumaru', sans-serif;
+            }
+            .fontA {
+                font-family: 'fontA', sans-serif;
+                display: none;
+            }
+            .fontB {
+                font-family: 'fontB', sans-serif;
+                display: none;
+            }
+
+
+            body { 
+                margin: 0;
+                display: flex;
+                flex-direction: column;
+            }
+            header{
+                user-select: none;  
+                height: 40px;
+                width: 100%;
+                background: black;
+                color: aliceblue;
+                font-size: 26px;
+            }
+            #logo{
+                margin-left: 10px;
+            }
+            .menu{
+                margin-left: 30px;
+            }
+            .lang-switch{
+                margin-left: 30px;
+            }
+
+            #wrapper {
+                display: flex;
+            }
+            #wrapper, main{
+                height: calc(100%-25px);
+            }
+            main{
+                margin: 0;
+                padding: 0;
+                touch-action: manipulation;
+            }
+            canvas{
+                vertical-align: bottom;
+            }
+            p{
+                width: 90%;
+                margin-left:  15px;
+                margin-top:  2px;
+            }
+            ul {
+                list-style: none;
+                padding: 0;
+                margin: 5px;          
+            }
+            input[type="radio"]{
+                display: none;
+            }
+            #langJp:checked ~ * *:lang(en) {
+                display: none;
+            }
+            #langEn:checked ~ * *:lang(jp) {
+                display: none;
+            }
+            #langJp:checked ~ #rules *:lang(en) {
+                display: none;
+            }
+            #langEn:checked ~ #rules *:lang(jp) {
+                display: none;
+            }
+
+            body:has(#langJp:checked) > div > aside > nav > ul > li> .en{
+                display: none;
+            }
+            body:has(#langEn:checked) > div > aside > nav > ul > li> .jp{
+                display: none;
+            }
+        </style>
+        <script type="text/javascript" src="./bundle.js"></script>
+    </head>
+    <body bgcolor="gray" text="black" link="blue" vlink="purple" alink="purple">
+        <header id = "header"> 
+            <p class="header-flex-container">
+                <span id = "logo" class = "nikumaru">Solo-Cat</span>
+                <span class = "right">
+                    <span class="lang-switch">
+                        <input type="radio" name="land" id="langJp"  checked>
+                        <input type="radio" name="land" id="langEn">
+                        <label for="langJp">
+                            <span lang="en" class = "fontB">日本語</span>
+                        </label>
+                        <label for="langEn">
+                            <span lang="jp" class = "fontB">English</span>
+                        </label>
+                    </span>
+                    <span id = "rules" class = "menu">
+                        <span lang = "en" class = "fontB">Rules </span>
+                        <span lang = "jp" class = "fontB">ルール </span>
+                    </span>
+                    <span id = "wishes" class = "menu">
+                        <span lang = "en" class = "fontB">Wishes </span>
+                        <span lang = "jp" class = "fontB">猫の望み </span>
+                    </span>
+                    <span id = "reset" class = "menu">
+                        <span lang = "en" class = "fontB">Reset All </span>
+                        <span lang = "jp" class = "fontB">すべてリセット </span>
+                    </span>
+                </span>
+            </p>
+        </header> 
+        <div id="wrapper" class="flex">
+            <main>
+            <canvas id="field" class="right"></canvas>
+            </main>
+        </div>
+    </body>
+</html>
